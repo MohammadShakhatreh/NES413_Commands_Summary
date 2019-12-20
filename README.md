@@ -233,21 +233,21 @@ Router(config-subif)# **ip address** _ip-address_ _subnet-mask_
 ## Troubleshooting Commands
 
 ### Show the routing table of the router
-Router# **show ip route**
+Router# **show ip route**  
 
 ### Show running Configuration
 Router# **show running-config**
 
 ### Show DHCP Bindings
-Router# **show ip dhcp binding**
+Router# **show ip dhcp binding**  
 
 ### Checking for connectivity
-Works in any device
+Works in any device  
 Router# **ping** _ip-address_
 
 ### OSPFv3 Validation
-Router# **show ipv6 route**
+Router# **show ipv6 route**  
 Router# **show ipv6 protocols**
 
 ### Show defined VLANs
-Switch# **show vlan**
+Switch# **show vlan**  
