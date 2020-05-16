@@ -5,9 +5,11 @@
   * [Basic Commands](#basic-commands)
     + [Configure the router name](#configure-the-router-name)
     + [Login banner](#login-banner)
+    + [prevent translation](#prevent-translation)
     + [Enable password for privileged mode](#enable-password-for-privileged-mode)
     + [Enable encrypted password for privileged mode](#enable-encrypted-password-for-privileged-mode)
     + [Enable console port password](#enable-console-port-password)
+    + [Enable virtual teletype](#enable-virtual-teletype)
     + [Ethernet interfaces configuration](#ethernet-interfaces-configuration)
       - [Subnet Mask Table Example](#subnet-mask-table-example)
     + [Save running config to the startup config file](#save-running-config-to-the-startup-config-file)
@@ -60,6 +62,11 @@ A login banner is a message that is displayed at login
 
 Router(config)# **banner motd**  #_statment_#  
 
+### prevent translation
+Prevent the translation of incorrectly entered commands as though they were hostnames
+
+Router(config)# **no ip domain-lookup**
+
 ### Enable password for privileged mode
 Router(config)# **enable password** _yourpassword_
 
@@ -71,8 +78,14 @@ Router(config)# **line console** _0_
 Router(config-line)# **login**  
 Router(config-line)# **password** _yourpassword_  
 
+### Enable virtual teletype
+Router(config)# **line vty** _0_ _4_
+Router(config-line)# **login**  
+Router(config-line)# **password** _yourpassword_
+
 ### Ethernet interfaces configuration
-Router(config)# **interface** _interface-name_  
+Router(config)# **interface** _interface-name_ 
+Router(config-if)# **description** _descriptive-text_
 Router(config-if)# **ip address** _ip-address_  _subnetmask_  
 Router(config-if)# no shutdown  
 
