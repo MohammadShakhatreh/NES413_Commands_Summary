@@ -28,6 +28,11 @@
     + [Enable FTP on the server](#enable-ftp-on-the-server)
     + [Upload and Download a file to/from the FTP server](#upload-and-download-a-file-to-from-the-ftp-server)
   * [NAT Router Configuration](#nat-router-configuration)
+    + [Static NAT](#static-nat)
+    + [Dynamic NAT](#dynamic-nat)
+    + [PAT](#pat)
+    + [Inside or Outside Interfaces](#inside-or-outside-interfaces)
+  * [InterVLAN Configuration](#intervlan-configuration)
   * [IPv6 Configuration](#ipv6-configuration)
   * [VLAN Configuration](#vlan-configuration)
     + [Creating VLANs](#creating-vlans)
@@ -127,7 +132,8 @@ Once you are in routing configuration mode, enter the classless network address 
 
 Router(config-router)# **network** _network-address_  
 
-This command prevents sending RIP updates to devices that will not use these updates.  
+This command prevents sending RIP updates to devices that will not use these updates.
+(and we can use it OSPF)
 
 Router(config-router)# **passive-interface** _interface-name_  
 
@@ -196,9 +202,27 @@ To quit the FTP session
 **ftp> quit**  
 
 ## NAT Router Configuration
+### Static NAT
 Statically map a public IP address to a private IP address using:  
 
 Router(config)# **ip nat inside source static** _private-address public-address_  
+
+### Dynamic NAT
+
+Step 1 - Define the pool of addresses that will be used for translation
+Router(config)# **ip nat pool** _pool-name first-IP second-IP_ **netmask** _subnet-mask_
+
+Step 2 - Configure a standard ACL to identify (permit) only those addresses that are to be translated.
+Router(config)# **access-list** _list-identifier-number_ **permit** _IP-address wildcard_
+
+Step 3 - Bind the ACL to the pool, using the ip nat inside source list command.
+Router(config)# **ip inside source list** _list-identifier-number_ **pool** _pool-name_
+
+### PAT
+
+
+
+### Inside or Outside Interfaces
 
 Before NAT can work, you must specify which interfaces are inside and which interfaces are outside.  
 
