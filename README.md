@@ -136,7 +136,7 @@ Once you are in routing configuration mode, enter the classless network address 
 Router(config-router)# **network** _network-address_  
 
 This command prevents sending RIP updates to devices that will not use these updates.
-(and we can use it OSPF)
+(and we can use it in OSPF)
 
 Router(config-router)# **passive-interface** _interface-name_  
 
