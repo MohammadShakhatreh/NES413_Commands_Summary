@@ -90,8 +90,11 @@ Router(config-line)# **password** _yourpassword_
 
 ### Ethernet interfaces configuration
 Router(config)# **interface** _interface-name_ 
+
 Router(config-if)# **description** _descriptive-text_
+
 Router(config-if)# **ip address** _ip-address_  _subnetmask_  
+
 Router(config-if)# no shutdown  
 
 #### Subnet Mask Table Example
@@ -210,12 +213,15 @@ Router(config)# **ip nat inside source static** _private-address public-address_
 ### Dynamic NAT
 
 Step 1 - Define the pool of addresses that will be used for translation
+
 Router(config)# **ip nat pool** _pool-name first-IP second-IP_ **netmask** _subnet-mask_
 
 Step 2 - Configure a standard ACL to identify (permit) only those addresses that are to be translated.
+
 Router(config)# **access-list** _list-identifier-number_ **permit** _IP-address wildcard_
 
 Step 3 - Bind the ACL to the pool, using the ip nat inside source list command.
+
 Router(config)# **ip inside source list** _list-identifier-number_ **pool** _pool-name_
 
 ### PAT
