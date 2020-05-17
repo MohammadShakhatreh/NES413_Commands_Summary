@@ -90,8 +90,11 @@ Router(config-line)# **password** _yourpassword_
 
 ### Ethernet interfaces configuration
 Router(config)# **interface** _interface-name_ 
+
 Router(config-if)# **description** _descriptive-text_
+
 Router(config-if)# **ip address** _ip-address_  _subnetmask_  
+
 Router(config-if)# no shutdown  
 
 #### Subnet Mask Table Example
